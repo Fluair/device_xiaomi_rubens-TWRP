@@ -78,6 +78,7 @@ jobs:
     - name: Repopick Patches
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
+        export TARGET_RELEASE=ap2a
         source build/envsetup.sh
         repopick 5639
         repopick 5675
