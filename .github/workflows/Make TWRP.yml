@@ -10,12 +10,13 @@ jobs:
     steps:
     - name: Remove Useless Package
       run: |
-        docker rmi `docker images -q`
+        docker_images="$(docker images -q)"
+        [ -n "$docker_images" ] && docker rmi "$docker_images"
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d
-        sudo apt -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-        sudo apt -y autoremove --purge
-        sudo apt -y autoclean
-        sudo apt clean
+        sudo apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mysql* php*
+        sudo apt-get -y autoremove --purge
+        sudo apt-get -y autoclean
+        sudo apt-get clean
 
     - name: Free Disk Space Before Build
       run: |
@@ -52,7 +53,7 @@ jobs:
         df -h
         export HOME=${GITHUB_WORKSPACE}
         cd ${GITHUB_WORKSPACE}
-        sudo apt -y install git aria2 
+        sudo apt-get -y install git aria2 
         git clone https://gitlab.com/OrangeFox/misc/scripts
         df -h
         cd scripts
@@ -84,7 +85,7 @@ jobs:
     - name: Clone Device Tree
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
-        git clone https://github.com/YuKongA/device_xiaomi_rubens-TWRP.git -b twrp-12.1_A13 ./device/xiaomi/rubens
+        git clone "${{ github.repositoryUrl }}" -b twrp-12.1_A13 ./device/xiaomi/rubens
 
     - name: Building
       run: |
