@@ -92,6 +92,7 @@ jobs:
 
     - name: Building
       run: |
+        export HOME=${GITHUB_WORKSPACE}
         cd ${GITHUB_WORKSPACE}/workspace
         source build/envsetup.sh
         lunch twrp_rubens-ap2a-eng
