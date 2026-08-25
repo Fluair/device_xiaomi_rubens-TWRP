@@ -54,7 +54,7 @@ jobs:
         export HOME=${GITHUB_WORKSPACE}
         cd ${GITHUB_WORKSPACE}
         sudo apt-get -y install git aria2 
-        git clone https://gitlab.com/OrangeFox/misc/scripts
+        git clone https://gitlab.com/OrangeFox/misc/scripts.git
         df -h
         cd scripts
         sudo bash setup/android_build_env.sh
