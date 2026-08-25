@@ -82,7 +82,7 @@ jobs:
         source build/envsetup.sh
         # repopick 5639 || true
         # repopick 5675 || true
-        repopick -t android-14.1 || true
+        # repopick -t android-14.1 || true
 
     - name: Clone Device Tree
       run: |
