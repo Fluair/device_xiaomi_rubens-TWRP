@@ -94,7 +94,7 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
         source build/envsetup.sh
-        lunch twrp_rubens-eng
+        lunch twrp_rubens-ap2a-eng
         mka vendorbootimage -j$(nproc --all)
 
     - name: Upload Artifact
