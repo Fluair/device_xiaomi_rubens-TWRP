@@ -69,6 +69,11 @@ jobs:
         git config --global user.email "Android@teio.tk"
         repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-14.1
 
+    - run: touch /tmp/keepalive
+    - name: Setup Debug Session
+      uses: csexton/debugger-action@master
+
+
     - name: Repo Sync
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
