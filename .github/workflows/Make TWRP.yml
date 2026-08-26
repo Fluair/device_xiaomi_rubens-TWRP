@@ -8,6 +8,13 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+    - run: |
+        touch /tmp/keepalive
+        export ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
+
+    - name: Setup Debug Session
+      uses: csexton/debugger-action@master
+
     - name: Remove Useless Package
       run: |
         docker_images="$(docker images -q)"
@@ -41,13 +48,6 @@ jobs:
     #     remove-haskell: 'true'
     #     remove-codeql: 'true'
     #     remove-docker-images: 'true'
-
-    - run: |
-        touch /tmp/keepalive
-        export ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
-
-    - name: Setup Debug Session
-      uses: csexton/debugger-action@master
 
     - name: Check Out
       uses: actions/checkout@main
