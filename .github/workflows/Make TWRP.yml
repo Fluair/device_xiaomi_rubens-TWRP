@@ -12,7 +12,7 @@ jobs:
       run: |
         docker_images="$(docker images -q)"
         [ -n "$docker_images" ] && docker rmi "$docker_images"
-        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php apt/sources.list.d
+        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php
         sudo apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mysql* php*
         sudo apt-get -y autoremove --purge
         sudo apt-get -y autoclean
